@@ -4,13 +4,11 @@
 
 ## Caracteristicas principales
 
----
 - **Filtrado multicriterio** por 10+ parámetros técnicos
 - **Validación automática** de rangos técnicos
 - **Interfaz intuitiva** con menú interactivo
 
 ## Columnas Disponibles
----
 
 | Parámetro                | Tipo       | Filtrable | Validación                     | Ejemplo Válido |
 | ------------------------ | ---------- | --------- | ------------------------------ | -------------- |
@@ -28,14 +26,13 @@
 
 ## install
 
----
 `nix`: Sigue las instrucciones de [`devenv`](https://devenv.sh/getting-started/)
-`otros`: Instala `panda` y una version
-relativamente nueva de `python`
+`otros`: Instala `panda` y una version relativamente nueva de `python`
 
 ## Uso Basico
----
 
 ```python
 python main.py
 ```
+
+---
