@@ -1,14 +1,5 @@
-from ast import Global
-from numpy.ma import maximum_fill_value
 import pandas as pd
 import numpy as np
-import kaggle
-from pandas.core.tools.numeric import is_decimal
-
-# Downloads dataset
-# kaggle.api.authenticate()
-# kaggle.api.dataset_download_files("amansingh0000000/smartphones", path=".", unzip=True)
-
 
 # read donwloaded csv
 
@@ -26,7 +17,7 @@ def get_price_range():
 max_val, min_val = get_price_range()
 
 # compares prices and shows between the price range
-df_try = df.query(f"{max_val} >= `Price (USD)` > {min_val}")
+df = df.query(f"{max_val} >= `Price (USD)` > {min_val}")
 
 
 def ask_refresh_rate():
@@ -41,7 +32,11 @@ def ask_refresh_rate():
 
 refresh_rate = ask_refresh_rate()
 
-cont_df = df_try.query(f"{refresh_rate} == `Refresh Rate (Hz)`")
+df = df.query(f"{refresh_rate} == `Refresh Rate (Hz)`")
 
-print("test \n")
-print(cont_df)
+df = df.sort_values(by="Price (USD)", ascending=False)
+
+if df.empty:
+    print("empty")
+else:
+    print(df)
