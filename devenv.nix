@@ -5,28 +5,34 @@
   inputs,
   ...
 }: {
-  # https://devenv.sh/basics/
-  env.GREET = " [python env test]";
-
+  env = {
+    NIX_LD_LIBRARY_PATH = lib.makeLibraryPath (
+      with pkgs; [
+        zlib
+        libgcc # Pandas, numpy etc.
+        stdenv.cc.cc
+      ]
+    );
+    GREET = "[python env test]";
+  };
   # https://devenv.sh/packages/
-  packages = [
-    pkgs.git
+  packages = with pkgs; [
+    postgresql
+    firefox-unwrapped
+    geckodriver
+    gcc-unwrapped # fix: libstdc++.so.6: cannot open shared object file
+    libz # fix: for numpy/pandas import
   ];
 
-  # https://devenv.sh/languages/
-  # languages.rust.enable = true;
   languages.python = {
     enable = true;
-    poetry = {
+
+    uv = {
       enable = true;
-      activate.enable = true;
-      install.enable = true;
     };
+    venv.enable = true;
+    venv.requirements = ./requirements.txt;
   };
-
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
-
   # https://devenv.sh/scripts/
   scripts.hello.exec = ''
     echo hello from $GREET
@@ -36,13 +42,6 @@
     echo $GREET
     git --version
   '';
-
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
   # https://devenv.sh/tests/
   enterTest = ''
     echo "Running tests"
