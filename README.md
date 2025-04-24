@@ -1,6 +1,9 @@
 # BUSCADOR DE TELEFONOS MOVILES
 
 ---
+>[!NOTE]
+> Estamos utilizando una base de datos de [kaggle](https://www.kaggle.com/datasets/amansingh0000000/smartphones)
+
 ## Introduccion
 En la actualidad, el mercado de los teléfonos móviles ofrece una amplia variedad de modelos con características cada vez más sofisticadas. Esta diversidad, aunque beneficiosa para los consumidores, también puede generar confusión a la hora de elegir un dispositivo que se ajuste a sus necesidades específicas. Ante este desafío, surge la necesidad de contar con herramientas que permitan realizar búsquedas personalizadas y filtradas de manera eficiente.
 
@@ -12,6 +15,7 @@ Este proyecto fue desarrollado con el objetivo de facilitar la exploración y co
 - **Filtrado multicriterio** por 10+ parámetros técnicos
 - **Validación automática** de rangos técnicos
 - **Interfaz intuitiva** con menú interactivo
+
 
 ## Columnas Disponibles
 
@@ -31,12 +35,21 @@ Este proyecto fue desarrollado con el objetivo de facilitar la exploración y co
 
 ## install
 
+1. Copia el repositorio de github utilizando `git`
+```
+git clone git@github.com:dennkaii/Phone_indexer.git
+cd Phone_indexer/
+```
+2. Instala las dependecnias necesarias
+
 `nix`: Sigue las instrucciones de [`devenv`](https://devenv.sh/getting-started/)
 
-`otros`: Instala `panda` y una version relativamente nueva de `python`
+`otros`:
+```
+pip install -r ./requirements.txt
+```
 
-## Uso Basico
-
+3.  Corre el codigo
 ```python
 python main.py
 ```
